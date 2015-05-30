@@ -32,7 +32,7 @@ CREATE TABLE `allrounder_ranking` (
   `rank` int(10) unsigned NOT NULL,
   `rating` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `allrounder_ranking`
@@ -61,7 +61,7 @@ CREATE TABLE `batting_ranking` (
   `rank` int(10) unsigned NOT NULL,
   `rating` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `batting_ranking`
@@ -78,6 +78,35 @@ INSERT INTO `batting_ranking` (`id`,`teamid`,`rank`,`rating`) VALUES
 
 
 --
+-- Definition of table `best_players_info`
+--
+
+DROP TABLE IF EXISTS `best_players_info`;
+CREATE TABLE `best_players_info` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `teammemberid` int(10) unsigned NOT NULL,
+  `runs` int(10) unsigned NOT NULL,
+  `matches` int(10) unsigned NOT NULL,
+  `wickets` int(10) unsigned NOT NULL,
+  `teamid` int(10) unsigned NOT NULL,
+  `hs` int(10) unsigned NOT NULL,
+  `player_type` varchar(99) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `best_players_info`
+--
+
+/*!40000 ALTER TABLE `best_players_info` DISABLE KEYS */;
+INSERT INTO `best_players_info` (`id`,`teammemberid`,`runs`,`matches`,`wickets`,`teamid`,`hs`,`player_type`) VALUES 
+ (1,1,150,1,3,1,1,'BATSMEN'),
+ (2,20,200,2,1,3,2,'BATSMEN'),
+ (3,32,25,1,1,4,0,'BOWLER');
+/*!40000 ALTER TABLE `best_players_info` ENABLE KEYS */;
+
+
+--
 -- Definition of table `bowling_ranking`
 --
 
@@ -88,7 +117,7 @@ CREATE TABLE `bowling_ranking` (
   `rank` int(10) unsigned NOT NULL,
   `rating` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bowling_ranking`
@@ -130,6 +159,34 @@ INSERT INTO `fixtures` (`id`,`leftTeamId`,`rightTeamId`,`venue`,`date`) VALUES
 
 
 --
+-- Definition of table `general_stats`
+--
+
+DROP TABLE IF EXISTS `general_stats`;
+CREATE TABLE `general_stats` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `teamid` int(10) unsigned NOT NULL,
+  `played` int(10) unsigned NOT NULL,
+  `won` int(10) unsigned NOT NULL,
+  `loss` int(10) unsigned NOT NULL,
+  `draw` int(10) unsigned NOT NULL,
+  `points` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `general_stats`
+--
+
+/*!40000 ALTER TABLE `general_stats` DISABLE KEYS */;
+INSERT INTO `general_stats` (`id`,`teamid`,`played`,`won`,`loss`,`draw`,`points`) VALUES 
+ (1,1,3,2,1,0,10),
+ (2,3,4,1,2,1,12),
+ (3,4,4,1,1,2,5);
+/*!40000 ALTER TABLE `general_stats` ENABLE KEYS */;
+
+
+--
 -- Definition of table `grouped_by`
 --
 
@@ -138,14 +195,35 @@ CREATE TABLE `grouped_by` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `teamids` varchar(45) NOT NULL,
   `poolname` varchar(45) NOT NULL,
+  `rr` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `grouped_by`
 --
 
 /*!40000 ALTER TABLE `grouped_by` DISABLE KEYS */;
+INSERT INTO `grouped_by` (`id`,`teamids`,`poolname`,`rr`) VALUES 
+ (1,'1','A','0.00'),
+ (2,'2','B','0.01'),
+ (3,'3','C','1.01'),
+ (4,'4','A','0.00'),
+ (5,'5','B','0.00'),
+ (6,'6','A','0.00'),
+ (7,'7','C','0.00'),
+ (8,'8','D','0.00'),
+ (9,'9','A','0.00'),
+ (10,'10','A','0.15'),
+ (11,'11','B','1..12'),
+ (12,'12','B','0.12'),
+ (13,'13','C','1.00'),
+ (14,'14','B','1.11'),
+ (15,'15','C','0.00'),
+ (16,'16','D','0.00'),
+ (17,'17','C','0.00'),
+ (18,'18','D','0.00'),
+ (19,'19','D','0.00');
 /*!40000 ALTER TABLE `grouped_by` ENABLE KEYS */;
 
 
@@ -158,13 +236,16 @@ CREATE TABLE `latest_news` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `news` varchar(999) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `latest_news`
 --
 
 /*!40000 ALTER TABLE `latest_news` DISABLE KEYS */;
+INSERT INTO `latest_news` (`id`,`news`) VALUES 
+ (1,'Winners of the match'),
+ (2,'Awards(Man of the match, series etc.) kkkk');
 /*!40000 ALTER TABLE `latest_news` ENABLE KEYS */;
 
 
